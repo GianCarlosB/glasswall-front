@@ -1,0 +1,73 @@
+<section class="section sticky-top mb-3">
+  <div class="bg-success">
+    <div class="container p-1">
+      <div class="row">
+        <div class="col mb-2">
+          <h3 class="text-center text-white">
+            <strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit</strong>
+          </h3>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-xs-12 col-sm-6 col-lg-3 mb-1">
+          <select class="form-control input-transparent" [(ngModel)]="politicalPartySearch"
+          (change)="filterParliamentarians()">
+            <option value="">- Filtrar por partido -</option>
+            <option *ngFor="let politicalParty of politicalParties" [ngValue]="politicalParty">{{politicalParty}}</option>
+          </select>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-3">
+          <div class="input-group mb-3">
+            <input class="form-control input-transparent" type="text" placeholder="Nome do parlamentar" [(ngModel)]="parliamentaryNameSearch"
+            (keyup)="filterParliamentarians()">
+            <div class="input-group-append">
+              <div id="btn-search" class="btn text-dark bg-warning" type="button"><i class="fas fa-search" aria-hidden="true"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div *ngIf="parliamentarians.length > 0">
+    <div class="col-xs-11 col-sm-11 col-lg-7 mx-auto" *ngFor="let parliamentary of parliamentarians">
+      <div class="card card-parliamentary border-{{getBackgroundColorByPositionRanking(parliamentary.posicao)}}">
+        <div class="row no-gutters mx-sm-4 mx-lg-4">
+          <div class="col-auto m-2">
+            <div class="number-rounded-small text-{{getTextColorByPositionRanking(parliamentary.posicao)}} 
+            bg-{{getBackgroundColorByPositionRanking(parliamentary.posicao)}}">{{parliamentary.posicao}}°</div>
+          </div>
+          <div class="col-auto m-2 mx-sm-4 mx-lg-4">
+            <img class="image-rounded-small" src="{{parliamentary.foto}}">
+          </div>
+          <div class="col">
+            <div class="card-block px-2 m-2">
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 col-lg-6 mx-auto">
+                  <h5 class="card-title">{{parliamentary.nome}}</h5>
+                  <p class="card-text">
+                    <strong>{{parliamentary.cargo}}</strong>
+                    <br/>
+                    <small>{{parliamentary.partido}} / {{parliamentary.estado}}</small>
+                  </p>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-lg-6 mx-auto text-xs-center text-sm-right text-lg-right">
+                  <p class="card-text">
+                    <small class="text-muted">De {{parliamentary.inicioMandato | date: 'yyyy'}} à {{parliamentary.fimMandato | date: 'yyyy'}}</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="parliamentarians.length === 0">
+    <div class="col-xs-11 col-sm-11 col-lg-7 mx-auto alert alert-info text-center py-3" role="alert">
+      <i class="fas fa-info-circle"></i>
+      Não foi localizado nenhum político com os parâmetros informados.
+    </div>
+  </div>
+</section>

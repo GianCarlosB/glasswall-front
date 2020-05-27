@@ -1,0 +1,30 @@
+@import '../../assets/scss/variables';
+
+.banner-area {
+  background: rgba(0, 0, 0, 0) url("../../assets/images/banner.jpg") no-repeat fixed center top;
+  height: auto;
+  width: 100%;
+}
+  
+.banner-inner {
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  padding: 50px 0;
+}
+
+.banner-overly {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.banner-content {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2.5% 0 0 0;
+  margin: 0 10%;
+}

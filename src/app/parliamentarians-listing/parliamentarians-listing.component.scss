@@ -1,0 +1,28 @@
+@import '../../assets/scss/variables';
+
+#btn-search{
+  cursor: default;
+}
+
+.image-rounded-small  {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+}
+
+.number-rounded-small {
+  width: 35px;
+  line-height: 35px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: Arial bold 15px;
+}
+
+.card-parliamentary {
+  border-top: solid 5px;
+}
+
+.card-parliamentary:hover {
+  background-color: #E6E6E6;
+  cursor: pointer;
+}
